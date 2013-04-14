@@ -17,5 +17,13 @@ module CurrentCart
       @cart = Cart.create
       session[:cart_id] = @cart.id
     end
+    
+    def set_visit_store_index_page_counter 
+      if session[:visit_store_index_page_counter].nil?
+        session[:visit_store_index_page_counter] = 0
+      end
+      session[:visit_store_index_page_counter] += 1
+      @visit_store_index_page_counter = session[:visit_store_index_page_counter] 
+    end    
 end
 
