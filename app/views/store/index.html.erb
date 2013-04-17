@@ -4,30 +4,20 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
-<!-- START_HIGHLIGHT -->
 <% cache ['store', Product.latest] do %>
-<!-- END_HIGHLIGHT -->
   <% @products.each do |product| %>
-<!-- START_HIGHLIGHT -->
     <% cache ['entry', product] do %>
-<!-- END_HIGHLIGHT -->
       <div class="entry">
         <%= image_tag(product.image_url) %>
         <h3><%= product.title %></h3>
         <p><%= sanitize(product.description) %></p>
         <div class="price_line">
-    <!-- START:currency -->
           <span class="price"><%= number_to_currency(product.price) %></span>
-          <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
-          <span>You visited store <%= @visit_store_index_page_counter %></span>
-    <!-- END:currency -->
+          <%= button_to 'Add to Cart', line_items_path(product_id: product),
+            remote: true %>
         </div>
       </div>
-<!-- START_HIGHLIGHT -->
     <% end %>
-<!-- END_HIGHLIGHT -->
   <% end %>
-<!-- START_HIGHLIGHT -->
 <% end %>
-<!-- END_HIGHLIGHT -->
 
