@@ -25,7 +25,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: demo_production
+  database: postgres
   pool: 5
   username: postgres
   password: sales7
